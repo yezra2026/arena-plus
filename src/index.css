@@ -1,0 +1,67 @@
+/* ============================================
+   ArenaPlus Sportsbook — Global Styles
+   ============================================ */
+
+:root {
+  /* Brand Palette */
+  --ap-orange:        #FF6A00;
+  --ap-orange-light:  #FF9A00;
+  --ap-orange-pale:   #FFF5EB;
+  --ap-orange-dim: rgba(255, 106, 0, 0.10);
+  --ap-black:         #111111;
+  --ap-charcoal:      #2C2C2C;
+  --ap-gray:          #6B7280;
+  --ap-gray-light:    #D1D5DB;
+  --ap-gray-pale:     #F5F5F7;
+  --ap-white:         #FFFFFF;
+
+  /* Semantic */
+  --color-success:    #16A34A;
+  --color-success-bg: #F0FDF4;
+  --color-error:      #DC2626;
+  --color-error-bg:   #FFF1F2;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:  0 16px 48px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-orange: 0 8px 32px rgba(204, 0, 0, 0.25);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #111111;
+  color: var(--ap-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--ap-orange);
+  outline-offset: 2px;
+}

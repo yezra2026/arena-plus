@@ -1,0 +1,62 @@
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 44px;
+  height: 52px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dot.active {
+  border-color: #ffffff;
+  background: rgba(255,255,255,0.15);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.dot.filled {
+  background: rgba(0,0,0,0.3);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.dot.error {
+  border-color: #ff4444;
+  background: rgba(255,0,0,0.2);
+  color: #ff4444;
+}
+
+.dot.success {
+  border-color: var(--color-success);
+  background: rgba(22,163,74,0.2);
+  color: var(--color-success);
+}
+
+.shake {
+  animation: shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+  50%       { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+
+@keyframes shake {
+  10%, 90%  { transform: translateX(-2px); }
+  20%, 80%  { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60%  { transform: translateX(6px); }
+}
