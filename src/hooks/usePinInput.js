@@ -1,8 +1,57 @@
 import { useState, useCallback, useEffect } from 'react';
+import { PIN_SCHEDULE } from '../data/pinSchedule';
 
-const SECRET_PIN = '123456';
-/*246800  */
+function getPhTime() {
+  const now = new Date();
+  const ph = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
+  ph.setHours(0, 0, 0, 0);
+  return ph;
+}
 
+function getCurrentSchedule() {
+  const today = getPhTime();
+  return PIN_SCHEDULE.find(entry => {
+    const from = new Date(entry.from);
+    const to = new Date(entry.to);
+    to.setHours(23, 59, 59, 999);
+    return today >= from && today <= to;
+  }) || null;
+}
+
+function getUsedPins(scheduleKey) {
+  try {
+    const stored = localStorage.getItem(`used_pins_${scheduleKey}`);
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+}
+
+function markPinUsed(scheduleKey, pin) {
+  try {
+    const used = getUsedPins(scheduleKey);
+    if (!used.includes(pin)) {
+      used.push(pin);
+      localStorage.setItem(`used_pins_${scheduleKey}`, JSON.stringify(used));
+    }
+  } catch {
+    // localStorage unavailable
+  }
+}
+
+function checkPin(enteredPin) {
+  const schedule = getCurrentSchedule();
+  if (!schedule) return 'no_schedule';
+
+  const scheduleKey = schedule.from;
+  const usedPins = getUsedPins(scheduleKey);
+
+  if (!schedule.pins.includes(enteredPin)) return 'wrong';
+  if (usedPins.includes(enteredPin)) return 'already_used';
+
+  markPinUsed(scheduleKey, enteredPin);
+  return 'success';
+}
 
 export function usePinInput({ onSuccess } = {}) {
   const [digits, setDigits] = useState([]);
@@ -22,7 +71,9 @@ export function usePinInput({ onSuccess } = {}) {
     setDigits(next);
 
     if (next.length === 6) {
-      if (next.join('') === SECRET_PIN) {
+      const result = checkPin(next.join(''));
+
+      if (result === 'success') {
         setStatus('success');
         onSuccess?.();
       } else {
