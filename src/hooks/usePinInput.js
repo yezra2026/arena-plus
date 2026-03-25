@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 
-const SECRET_PIN = '246800';
+const SECRET_PIN = '123456';
+/*246800  */
+
 
 export function usePinInput({ onSuccess } = {}) {
   const [digits, setDigits] = useState([]);

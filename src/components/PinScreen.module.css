@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #333131;
+  background: #1a1a1a;
   position: fixed;
   top: 0;
   left: 0;
@@ -21,60 +21,81 @@
   transition: background 0.3s ease;
 }
 
-/* ── Card — fixed phone size, never stretches ── */
+
 .card {
   position: relative;
   z-index: 1;
-  width: 420px;
-  height: 780px;
+  width: 860px;
+  height: 645px;
   flex-shrink: 0;
-  border-radius: 28px;
+  border-radius: 24px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.6);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0 32px 32px;
-  gap: 16px;
-  background-image: url('../assets/PIN_background.webp');
+  background-image: url('../assets/arenaplus.webp');
   background-size: cover;
-  background-position: center top;
+  background-position: left center;
   background-color: #c44a00;
 }
 
 
-@media (max-height: 900px) {
-  .card { transform: scale(0.95); transform-origin: center center; }
-}
-@media (max-height: 800px) {
-  .card { transform: scale(0.85); transform-origin: center center; }
-}
-@media (max-height: 700px) {
-  .card { transform: scale(0.75); transform-origin: center center; }
-}
-@media (max-height: 600px) {
-  .card { transform: scale(0.65); transform-origin: center center; }
-}
-@media (max-width: 420px) {
-  .card { transform: scale(0.92); transform-origin: center center; }
+.logoSpacer {
+  flex: 0 0 440px;
+  height: 100%;
 }
 
-.logoSpacer { height: 300px; }
+.interactive {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+  padding: 40px 20px 24px 20px;
+  background: transparent;
+}
 
+/* ── Text ── */
 .heading {
   text-align: center;
   width: 100%;
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  text-align: center;
 }
 
 .logoWrap { display: none; }
 .logo { display: none; }
 .title { display: none; }
 .forgotBtn { display: none; }
+
+/* ── Scale down to fit any screen ── */
+@media (max-width: 900px) {
+  .card { transform: scale(0.9); transform-origin: center center; }
+}
+@media (max-width: 800px) {
+  .card { transform: scale(0.8); transform-origin: center center; }
+}
+@media (max-width: 700px) {
+  .card { transform: scale(0.7); transform-origin: center center; }
+}
+@media (max-width: 600px) {
+  .card { transform: scale(0.6); transform-origin: center center; }
+}
+@media (max-height: 680px) {
+  .card { transform: scale(0.85); transform-origin: center center; }
+}
+@media (max-height: 560px) {
+  .card { transform: scale(0.75); transform-origin: center center; }
+}
+@media (max-height: 460px) {
+  .card { transform: scale(0.65); transform-origin: center center; }
+}
