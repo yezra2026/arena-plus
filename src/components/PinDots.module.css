@@ -60,3 +60,10 @@
   30%, 50%, 70% { transform: translateX(-6px); }
   40%, 60%  { transform: translateX(6px); }
 }
+
+.dot.locked {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+  color: #ffffff;
+  cursor: not-allowed;
+}

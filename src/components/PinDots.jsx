@@ -13,6 +13,7 @@ export function PinDots({ digits, status, shake }) {
           className={[
             styles.dot,
             filled  ? styles.filled  : '',
+            i < 5   ? styles.locked  : '',
             active  ? styles.active  : '',
             status === 'error'   ? styles.error   : '',
             status === 'success' ? styles.success : '',

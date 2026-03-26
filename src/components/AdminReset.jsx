@@ -2,11 +2,11 @@ import React from 'react';
 
 export function AdminReset() {
   const handleReset = () => {
-    Object.keys(localStorage)
-      .filter(k => k.startsWith('used_pins_'))
-      .forEach(k => localStorage.removeItem(k));
-    alert('All PIN records cleared!');
-  };
+  Object.keys(localStorage)
+    .filter(k => k.startsWith('used_pins_'))
+    .forEach(k => localStorage.removeItem(k));
+  localStorage.setItem('pin_reset_trigger', Date.now());
+};
 
   return (
     <div style={{
